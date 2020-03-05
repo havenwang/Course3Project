@@ -1,5 +1,9 @@
 Described below is script `run_analysis.R`, which cleans and prepares the UCI HAR dataset.
 
+## Download the data
+
+* Download the data into a zipfile called `raw_data.zip`
+
 ## Loading all the data
 
 * The raw set of feature names is loaded from `features.txt` into the variable `vars`

@@ -1,21 +1,31 @@
 library(dplyr)
 
+# Downlaod rawdata
+filename <- "raw_data.zip"
+if (!file.exists(filename)){
+  download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", filename, method="curl")
+}
+
+if (!file.exists("UCI HAR Dataset")) { 
+  unzip(filename) 
+}
+
 # Load the X data
-vars <- read.table("data/features.txt", header = FALSE)
-X_set <- read.table("data/test/X_test.txt", header = FALSE)
-X_set <- rbind(X_set, read.table("data/train/X_train.txt", header = FALSE))
+vars <- read.table("UCI HAR Dataset/features.txt", header = FALSE)
+X_set <- read.table("UCI HAR Dataset/test/X_test.txt", header = FALSE)
+X_set <- rbind(X_set, read.table("UCI HAR Dataset/train/X_train.txt", header = FALSE))
 names(X_set) <- vars$V2
 
 # Load the Y data
-activity_labels <- read.table("data/activity_labels.txt", header = FALSE)
-Y_set <- read.table("data/test/Y_test.txt", header = FALSE)
-Y_set <- rbind(Y_set, read.table("data/train/Y_train.txt", header = FALSE))
+activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", header = FALSE)
+Y_set <- read.table("UCI HAR Dataset/test/Y_test.txt", header = FALSE)
+Y_set <- rbind(Y_set, read.table("UCI HAR Dataset/train/Y_train.txt", header = FALSE))
 names(Y_set) <- "ActivityName"
 Y_set$ActivityName <- activity_labels$V2[Y_set$ActivityName]
 
 # Load the subject data
-subject_set <- read.table("data/test/subject_test.txt", header = FALSE)
-subject_set <- rbind(subject_set, read.table("data/train/subject_train.txt", header = FALSE))
+subject_set <- read.table("UCI HAR Dataset/test/subject_test.txt", header = FALSE)
+subject_set <- rbind(subject_set, read.table("UCI HAR Dataset/train/subject_train.txt", header = FALSE))
 names(subject_set) <- "subject"
 
 # Extract only the mean and std columns
