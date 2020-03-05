@@ -48,4 +48,4 @@ grouped_data <- complete_set %>%
   group_by(subject, ActivityName) %>%
   summarise_all(list(mean = mean))
 
-write.csv(grouped_data, file="grouped_data.csv", row.names=FALSE)
+write.table(grouped_data, "grouped_data.txt", row.name=FALSE)

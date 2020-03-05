@@ -36,4 +36,4 @@ Described below is script `run_analysis.R`, which cleans and prepares the UCI HA
 
 ## Export the data
 
-* Export the data as a CSV to a file `grouped_data.csv`
+* Export the data as a to a file `grouped_data.txt`
